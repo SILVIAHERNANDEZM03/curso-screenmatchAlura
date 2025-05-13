@@ -1,14 +1,16 @@
+package com.aluracursos.screenmatch.principal;
+
 import com.aluracursos.screenmatch.calculos.CalculadoraDeTiempo;
 import com.aluracursos.screenmatch.calculos.FiltroRecomendacion;
 import com.aluracursos.screenmatch.modelos.Episodio;
 import com.aluracursos.screenmatch.modelos.Pelicula;
 import com.aluracursos.screenmatch.modelos.Serie;
 
+import java.util.ArrayList;
+
 public class Principal {
     public static void main(String[] args) {
-        Pelicula miPelicula = new Pelicula();
-        miPelicula.setNombre("Interestelar");
-        miPelicula.setFechaDeLanzamiento(2014);
+        Pelicula miPelicula = new Pelicula("Interestelar", 2014);
         miPelicula.setDuracionEnMinutos(169);
         miPelicula.setIncluidoEnElPlan(true);
 
@@ -20,9 +22,7 @@ public class Principal {
         System.out.println(miPelicula.calculaMedia());
 
 
-        Serie greysAnatomy = new Serie();
-        greysAnatomy.setNombre("Grey's anatomy");
-        greysAnatomy.setFechaDeLanzamiento(2005);
+        Serie greysAnatomy = new Serie("Grey's anatomy", 2005);
         greysAnatomy.setTemporadas(21);
         greysAnatomy.setMinutosPorEpisodio(45);
         greysAnatomy.setEpisodiosPorTemporada(25);
@@ -30,9 +30,7 @@ public class Principal {
         System.out.println(greysAnatomy.getDuracionEnMinutos());
 
 
-        Pelicula otraPelicula = new Pelicula();
-        otraPelicula.setNombre("Capitán América: El primer vengador");
-        otraPelicula.setFechaDeLanzamiento (2011);
+        Pelicula otraPelicula = new Pelicula("Capitán América: El primer vengador", 2011);
         otraPelicula.setDuracionEnMinutos(124);
 
         CalculadoraDeTiempo calculadora = new CalculadoraDeTiempo();
@@ -52,6 +50,22 @@ public class Principal {
         episodio.setTotalVisualizaciones(50);
 
         filtroRecomendacion.filtra(episodio);
+
+        var peliculaDeBruno = new Pelicula("El señor de los anillos",2001);
+        peliculaDeBruno.setDuracionEnMinutos(180);
+
+        ArrayList<Pelicula>listaDePeliculas = new ArrayList<>();
+        listaDePeliculas.add(peliculaDeBruno);
+        listaDePeliculas.add(miPelicula);
+        listaDePeliculas.add(otraPelicula);
+
+        System.out.println("Tamaño de la lista: " + listaDePeliculas.size());
+        System.out.println("La primera pelicula es: " + listaDePeliculas.get(0).getNombre());
+
+        System.out.println(listaDePeliculas.toString());
+        System.out.println("toString de la pelicula: " + listaDePeliculas.get(0).toString());
+
+
 
     }
 
